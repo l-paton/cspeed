@@ -155,7 +155,6 @@ public class NormalGameFragment extends Fragment {
                 }
 
                 try{
-
                     MainActivity.partida.setResultadoIntroducido(Integer.parseInt(numero));
                     if(MainActivity.partida.comprobarResultado()){
                         MainActivity.partida.sumarAcierto(getContext());

@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
@@ -14,7 +15,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private Fragment fragment;
-    private Button btnEmpezar;
+    private Button btnEmpezar, btnCambiar;
     public static TextView pantallaOperaciones, pantallaAciertos, pantallaFallos;
     public static Partida partida;
     public static Chronometer chronometer;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         fragment = new NormalGameFragment();
         chronometer = findViewById(R.id.chronometer1);
         btnEmpezar = findViewById(R.id.btnEmpezar);
+        btnCambiar = findViewById(R.id.btnCambio);
         pantallaOperaciones = findViewById(R.id.pantallaOperaciones);
         pantallaAciertos = findViewById(R.id.txtAciertos);
         pantallaFallos = findViewById(R.id.txtFallos);
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void empezar(View view) {
+        btnCambiar.setEnabled(true);
         startChronometer(getApplicationContext());
         pantallaOperaciones.setText(partida.generarOperacion());
         btnEmpezar.setText("Stop");
@@ -56,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
+        btnCambiar.setEnabled(false);
         chronometer.stop();
         finish();
         overridePendingTransition(0, 0);
@@ -64,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static void startChronometer(final Context c){
         chronometer.setCountDown(true);
-        chronometer.setBase(SystemClock.elapsedRealtime()+(10*1000));
+        chronometer.setBase(SystemClock.elapsedRealtime()+(20*1000));
         chronometer.start();
 
         chronometer.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
