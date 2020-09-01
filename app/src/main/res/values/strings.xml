@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Velocidad de Calculo</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="aciertos">ACIERTOS: %d</string>
+    <string name="fallos">FALLOS: %d</string>
+    <string name="numero">%s %s</string>
+</resources>
