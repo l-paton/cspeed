@@ -73,12 +73,16 @@ public class Game extends AppCompatActivity {
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        Game.chronometer.stop();
+        this.finish();
+    }
+
+    @Override
     protected void onStop() {
         super.onStop();
-        btnCambiar.setEnabled(false);
         chronometer.stop();
         finish();
-        overridePendingTransition(0, 0);
-        startActivity(getIntent());
     }
 }

@@ -1,7 +1,11 @@
 <resources>
-    <string name="app_name">Velocidad de Calculo</string>
+    <string name="app_name">CSpeed</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="aciertos">ACIERTOS: %d</string>
     <string name="fallos">FALLOS: %d</string>
     <string name="numero">%s %s</string>
+    <string name="dificultad1">Fácil</string>
+    <string name="dificultad2">Normal</string>
+    <string name="dificultad3">Imposible</string>
+    <string name="empezar">Empezar</string>
 </resources>

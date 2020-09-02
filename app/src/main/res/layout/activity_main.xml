@@ -13,6 +13,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
+        android:checkedButton="@id/radioButton2"
         android:paddingRight="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,26 +24,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Fácil"
-            android:textColor="#222222" />
+            android:checked="false"
+            android:text="@string/dificultad1"
+            android:textColor="#000000"
+            android:textSize="14sp" />
 
         <RadioButton
             android:id="@+id/radioButton2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:checked="true"
-            android:text="Normal"
-            android:textColor="#222222"
-            android:textColorHint="#222222" />
+            android:checked="false"
+            android:text="@string/dificultad2"
+            android:textColor="#000000"
+            android:textColorHint="#222222"
+            android:textSize="14sp" />
 
         <RadioButton
             android:id="@+id/radioButton3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Imposible"
-            android:textColor="#222222" />
+            android:checked="false"
+            android:text="@string/dificultad3"
+            android:textColor="#000000"
+            android:textSize="14sp" />
     </RadioGroup>
 
     <Button
@@ -52,10 +58,10 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="36dp"
-        android:background="#313131"
+        android:background="@color/colorTertiary"
         android:onClick="Empezar"
-        android:text="Empezar"
-        android:textColor="#ebb916"
+        android:text="@string/empezar"
+        android:textColor="@color/colorSecondary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.523"
@@ -69,8 +75,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
-        android:text="C-Speed"
-        android:textColor="#dd352e"
+        android:text="@string/app_name"
+        android:textColor="@color/colorPrimary"
         android:textSize="32sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -112,5 +118,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8"
-        app:srcCompat="@mipmap/icon_round" />
+        app:srcCompat="@mipmap/icon_foreground" />
 </androidx.constraintlayout.widget.ConstraintLayout>

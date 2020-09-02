@@ -1,14 +1,14 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="oval">
 
-    <solid android:color="#4d8691" />
+    <solid android:color="@color/colorTertiary" />
 
     <size
-        android:height="175dp"
-        android:width="175dp" />
+        android:height="125dp"
+        android:width="125dp" />
 
     <stroke
         android:width="2dp"
-        android:color="#FFFFFF" />
+        android:color="@color/colorPrimaryDark" />
 
 </shape>

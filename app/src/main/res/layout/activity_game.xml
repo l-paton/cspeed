@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
     tools:context=".Game">
+
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
@@ -23,10 +23,10 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:fontFamily="sans-serif-condensed"
+            android:fontFamily="sans-serif-condensed-medium"
             android:gravity="center_horizontal|center_vertical"
             android:text="@string/aciertos"
-            android:textColor="#FBF8F8"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="22sp" />
 
         <TextView
@@ -34,10 +34,10 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:fontFamily="sans-serif-condensed"
+            android:fontFamily="sans-serif-condensed-medium"
             android:gravity="center_horizontal|center_vertical"
             android:text="@string/fallos"
-            android:textColor="#EEE8E8"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="22sp" />
 
     </LinearLayout>
@@ -50,7 +50,7 @@
         android:gravity="center"
         android:text="Chronometer"
         android:textAlignment="center"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="@+id/pantallaOperaciones"
         app:layout_constraintEnd_toStartOf="@+id/pantallaOperaciones"

@@ -10,6 +10,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:background="@color/colorTertiary"
         android:enabled="true"
-        android:text=" CHANGE" />
+        android:text="CAMBIAR"
+        android:textColor="#FFFFFF" />
+
 </LinearLayout>
