@@ -49,11 +49,11 @@ public class InverseGameFragment extends Fragment {
 
         for(int i = 0; i < 4; i++){
             if(posicion == 3){
-                botones[posicion].setText(String.valueOf(MainActivity.partida.getResultadoGenerado()));
+                botones[posicion].setText(String.valueOf(Game.partida.getResultadoGenerado()));
                 botones[posicion].setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        MainActivity.partida.sumarAcierto(getContext());
+                        Game.partida.sumarAcierto(getContext());
                         generar();
                     }
                 });
@@ -64,7 +64,7 @@ public class InverseGameFragment extends Fragment {
                 botones[posicion].setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        MainActivity.partida.sumarFallo(getContext());
+                        Game.partida.sumarFallo(getContext());
                         generar();
                     }
                 });
@@ -77,7 +77,7 @@ public class InverseGameFragment extends Fragment {
         Partida partidaFake = new Partida();
         partidaFake.generarOperacion();
         int resultadoFake = partidaFake.getResultadoGenerado();
-        while(MainActivity.partida.getResultadoGenerado() == resultadoFake){
+        while(Game.partida.getResultadoGenerado() == resultadoFake){
             partidaFake.generarOperacion();
             resultadoFake = partidaFake.getResultadoGenerado();
         }

@@ -155,11 +155,11 @@ public class NormalGameFragment extends Fragment {
                 }
 
                 try{
-                    MainActivity.partida.setResultadoIntroducido(Integer.parseInt(numero));
-                    if(MainActivity.partida.comprobarResultado()){
-                        MainActivity.partida.sumarAcierto(getContext());
+                    Game.partida.setResultadoIntroducido(Integer.parseInt(numero));
+                    if(Game.partida.comprobarResultado()){
+                        Game.partida.sumarAcierto(getContext());
                     }else{
-                        MainActivity.partida.sumarFallo(getContext());
+                        Game.partida.sumarFallo(getContext());
                     }
 
                 }catch(Exception e){

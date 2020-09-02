@@ -6,19 +6,10 @@
     tools:context=".ButtonsFragment" >
 
     <Button
-        android:id="@+id/btnEmpezar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:onClick="empezar"
-        android:text="START"
-        tools:ignore="OnClick" />
-
-    <Button
         android:id="@+id/btnCambio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:enabled="false"
+        android:enabled="true"
         android:text=" CHANGE" />
 </LinearLayout>

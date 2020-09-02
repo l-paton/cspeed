@@ -4,8 +4,6 @@ import android.content.Context;
 
 import java.util.Random;
 
-import static android.provider.Settings.System.getString;
-
 public class Partida {
 
     private final char[] tipoOperacion = {'+', '-','*','/'};
@@ -55,15 +53,15 @@ public class Partida {
     }
 
     public void sumarAcierto(Context c){
-        MainActivity.partida.setAciertos(MainActivity.partida.getAciertos()+1);
-        MainActivity.pantallaAciertos.setText(c.getString(R.string.aciertos, getAciertos()));
-        MainActivity.nuevaOperacion(c);
+        Game.partida.setAciertos(Game.partida.getAciertos()+1);
+        Game.pantallaAciertos.setText(c.getString(R.string.aciertos, getAciertos()));
+        Game.nuevaOperacion(c);
     }
 
     public void sumarFallo(Context c){
-        MainActivity.partida.setFallos(MainActivity.partida.getFallos()+1);
-        MainActivity.pantallaFallos.setText(c.getString(R.string.fallos, getFallos()));
-        MainActivity.nuevaOperacion(c);
+        Game.partida.setFallos(Game.partida.getFallos()+1);
+        Game.pantallaFallos.setText(c.getString(R.string.fallos, getFallos()));
+        Game.nuevaOperacion(c);
     }
 
     public int getResultadoGenerado() {

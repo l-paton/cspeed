@@ -11,7 +11,7 @@ import android.widget.Button;
 
 public class ButtonsFragment extends Fragment {
 
-    private Button botonCambiar, botonEmpezar;
+    private Button botonCambiar;
     private Fragment fragment;
 
     public ButtonsFragment() {
@@ -28,7 +28,6 @@ public class ButtonsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_buttons, container, false);
         botonCambiar = view.findViewById(R.id.btnCambio);
-        botonEmpezar = view.findViewById(R.id.btnEmpezar);
 
         botonCambiar.setOnClickListener(new View.OnClickListener() {
             @Override
