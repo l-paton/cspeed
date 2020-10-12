@@ -36,7 +36,6 @@ public class ButtonsFragment extends Fragment {
                 getActivity().getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.fragment_replace,fragment)
-                        .addToBackStack(null)
                         .commit();
 
                 if(fragment instanceof InverseGameFragment){
