@@ -45,10 +45,13 @@ public class InverseGameFragment extends Fragment {
 
     private void generar(){
         Random random = new Random();
-        int posicion = random.nextInt(4);
+        int posicion = random.nextInt(3);
 
         for(int i = 0; i < 4; i++){
-            if(posicion == 3){
+            if(posicion > 3){
+                posicion = 0;
+            }
+            if(i == 3){
                 botones[posicion].setText(String.valueOf(Game.partida.getResultadoGenerado()));
                 botones[posicion].setOnClickListener(new View.OnClickListener() {
                     @Override
