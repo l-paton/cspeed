@@ -6,6 +6,9 @@
     <string name="numero">%s %s</string>
     <string name="dificultad1">Fácil</string>
     <string name="dificultad2">Normal</string>
-    <string name="dificultad3">Imposible</string>
+    <string name="dificultad3">Difícil</string>
     <string name="empezar">Empezar</string>
+    <string name="save_game_question">¿Guardar resultado?"</string>
+    <string name="yes">Sí</string>
+    <string name="no">No</string>
 </resources>

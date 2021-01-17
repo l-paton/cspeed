@@ -4,20 +4,18 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 
 public class NormalGameFragment extends Fragment {
 
     private Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn0, btnEnter, btnClear, btnSigno;
-    public static TextView pantallaNumero;
-    public static String numero = "", signo = "+";
+    public static TextView numberScreen;
+    public static String number = "", symbol = "+";
 
     public NormalGameFragment() {
     }
@@ -46,102 +44,102 @@ public class NormalGameFragment extends Fragment {
         btnEnter = view.findViewById(R.id.btnEnter);
         btnClear = view.findViewById(R.id.btnClear);
         btnSigno = view.findViewById(R.id.btnSigno);
-        pantallaNumero = view.findViewById(R.id.pantallaNumero);
+        numberScreen = view.findViewById(R.id.pantallaNumero);
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                numero += "1";
-                pantallaNumero.setText(signo + String.valueOf(numero));
+                number += "1";
+                numberScreen.setText(symbol + String.valueOf(number));
             }
         });
 
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                numero += "2";
-                pantallaNumero.setText(signo + String.valueOf(numero));
+                number += "2";
+                numberScreen.setText(symbol + String.valueOf(number));
             }
         });
 
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                numero += "3";
-                pantallaNumero.setText(signo + String.valueOf(numero));
+                number += "3";
+                numberScreen.setText(symbol + String.valueOf(number));
             }
         });
 
         btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                numero += "4";
-                pantallaNumero.setText(signo + String.valueOf(numero));
+                number += "4";
+                numberScreen.setText(symbol + String.valueOf(number));
             }
         });
 
         btn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                numero += "5";
-                pantallaNumero.setText(signo + String.valueOf(numero));
+                number += "5";
+                numberScreen.setText(symbol + String.valueOf(number));
             }
         });
 
         btn6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                numero += "6";
-                pantallaNumero.setText(signo + String.valueOf(numero));
+                number += "6";
+                numberScreen.setText(symbol + String.valueOf(number));
             }
         });
 
         btn7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                numero += "7";
-                pantallaNumero.setText(signo + String.valueOf(numero));
+                number += "7";
+                numberScreen.setText(symbol + String.valueOf(number));
             }
         });
 
         btn8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                numero += "8";
-                pantallaNumero.setText(signo + String.valueOf(numero));
+                number += "8";
+                numberScreen.setText(symbol + String.valueOf(number));
             }
         });
 
         btn9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                numero += "9";
-                pantallaNumero.setText(signo + String.valueOf(numero));
+                number += "9";
+                numberScreen.setText(symbol + String.valueOf(number));
             }
         });
 
         btn0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                numero += "0";
-                pantallaNumero.setText(signo + String.valueOf(numero));
+                number += "0";
+                numberScreen.setText(symbol + String.valueOf(number));
             }
         });
 
         btnClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                numero = "";
-                pantallaNumero.setText(signo + String.valueOf(numero));
+                number = "";
+                numberScreen.setText(symbol + String.valueOf(number));
             }
         });
 
         btnSigno.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(signo.equals("+")) signo = "-";
-                else signo = "+";
-                pantallaNumero.setText(signo + String.valueOf(numero));
+                if(symbol.equals("+")) symbol = "-";
+                else symbol = "+";
+                numberScreen.setText(symbol + String.valueOf(number));
             }
         });
 
@@ -149,13 +147,13 @@ public class NormalGameFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                if(signo.equals("-")){
-                    String aux = "-" + numero;
-                    numero = aux;
+                if(symbol.equals("-")){
+                    String aux = "-" + number;
+                    number = aux;
                 }
 
                 try{
-                    Game.partida.setResultadoIntroducido(Integer.parseInt(numero));
+                    Game.partida.setResultadoIntroducido(Integer.parseInt(number));
                     if(Game.partida.comprobarResultado()){
                         Game.partida.sumarAcierto(getContext());
                     }else{
@@ -166,8 +164,8 @@ public class NormalGameFragment extends Fragment {
 
                 }
 
-                numero = "";
-                pantallaNumero.setText("");
+                number = "";
+                numberScreen.setText("");
             }
         });
 
