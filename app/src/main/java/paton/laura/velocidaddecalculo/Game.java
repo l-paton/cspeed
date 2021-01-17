@@ -9,15 +9,15 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.SystemClock;
-import android.widget.Button;
+import android.text.InputType;
 import android.widget.Chronometer;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class Game extends AppCompatActivity {
 
-    private Fragment fragment;
-    private Button btnCambiar;
-    private static int tiempo = 0;
+    private static Fragment fragment;
+    private static int time = 0;
     public static TextView pantallaOperaciones, pantallaAciertos, pantallaFallos, screenTimeLimit;
     public static Partida partida;
     public static Chronometer chronometer;
@@ -29,7 +29,7 @@ public class Game extends AppCompatActivity {
         getSupportActionBar().hide();
 
         Bundle data = this.getIntent().getExtras();
-        tiempo = data.getInt("tiempo");
+        time = data.getInt("tiempo");
 
         if(data.getString("type").equalsIgnoreCase("normal")){
             fragment = new NormalGameFragment();
@@ -38,11 +38,12 @@ public class Game extends AppCompatActivity {
         }
 
         chronometer = findViewById(R.id.chronometer1);
-        btnCambiar = findViewById(R.id.btnCambio);
+        chronometer.setCountDown(true);
         screenTimeLimit = findViewById(R.id.timeLimit);
         pantallaOperaciones = findViewById(R.id.pantallaOperaciones);
         pantallaAciertos = findViewById(R.id.txtAciertos);
         pantallaFallos = findViewById(R.id.txtFallos);
+
         partida = new Partida();
         pantallaAciertos.setText(getString(R.string.aciertos, partida.getAciertos()));
         pantallaFallos.setText(getString(R.string.fallos, partida.getFallos()));
@@ -58,7 +59,7 @@ public class Game extends AppCompatActivity {
     }
 
     public void limitTime(){
-        new CountDownTimer(tiempo*5, 1000){
+        new CountDownTimer(time*10, 1000){
             @Override
             public void onTick(long millisUntilFinished){
                 screenTimeLimit.setText(String.valueOf(millisUntilFinished/1000));
@@ -73,26 +74,29 @@ public class Game extends AppCompatActivity {
     }
 
     public static void startChronometer(final Context c){
-        chronometer.setCountDown(true);
-        chronometer.setBase(SystemClock.elapsedRealtime()+(tiempo));
+        chronometer.setBase(SystemClock.elapsedRealtime()+(time));
         chronometer.start();
 
         chronometer.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
             @Override
-            public void onChronometerTick(Chronometer chronometer) {
-                if(Game.chronometer.getText().equals("00:00")){
+            public void onChronometerTick(Chronometer chrono) {
+
+                if(chronometer.getText().equals("00:00")){
+                    chronometer.setOnChronometerTickListener(null);
+                    if(fragment instanceof NormalGameFragment) {
+                        NormalGameFragment.numberScreen.setText("");
+                        NormalGameFragment.number = "";
+                        NormalGameFragment.symbol = "+";
+                    }
                     Game.partida.sumarFallo(c);
-                    NormalGameFragment.numberScreen.setText("");
-                    NormalGameFragment.number = "";
-                    NormalGameFragment.symbol = "+";
-                    newOperation(c);
                 }
             }
         });
+
     }
 
     public static void newOperation(Context c){
-        Game.chronometer.stop();
+        chronometer.stop();
         pantallaOperaciones.setText(partida.generarOperacion());
         startChronometer(c);
     }
@@ -108,13 +112,16 @@ public class Game extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         Game.chronometer.stop();
-        finish();
+        this.finish();
     }
 
     private void showDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(R.string.save_game_question);
-        builder.setCancelable(true);
+        builder.setTitle(R.string.save_game_question);
+        builder.setMessage("\nNombre:");
+
+        final EditText input = new EditText(this);
+        builder.setView(input);
 
         builder.setPositiveButton(
                 R.string.yes,
@@ -132,7 +139,6 @@ public class Game extends AppCompatActivity {
                     }
                 });
 
-        AlertDialog alert = builder.create();
-        alert.show();
+        builder.show();
     }
 }

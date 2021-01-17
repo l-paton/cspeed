@@ -48,7 +48,6 @@
         android:layout_height="80dp"
         android:fontFamily="sans-serif-condensed-medium"
         android:gravity="center"
-        android:text="Chronometer"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="28sp"
