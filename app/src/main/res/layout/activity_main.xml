@@ -4,118 +4,107 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     tools:context=".MainActivity">
 
     <RadioGroup
-        android:id="@+id/radioGroupDifficulty"
-        android:layout_width="110dp"
-        android:layout_height="88dp"
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:checkedButton="@id/radioButton2"
+        android:checkedButton="@id/radio_button_2"
+        android:gravity="center"
         android:paddingRight="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView">
 
         <RadioButton
-            android:id="@+id/radioButon1"
+            android:id="@+id/radio_button_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:checked="false"
-            android:text="@string/dificultad1"
-            android:textColor="#000000"
-            android:textSize="14sp" />
+            android:text="@string/dificulty_1"
+            android:textSize="18dp" />
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/radio_button_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+
             android:checked="false"
-            android:text="@string/dificultad2"
-            android:textColor="#000000"
-            android:textColorHint="#222222"
-            android:textSize="14sp" />
+            android:text="@string/dificulty_2"
+            android:textSize="18dp" />
 
         <RadioButton
-            android:id="@+id/radioButton3"
+            android:id="@+id/radio_button_3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:checked="false"
-            android:text="@string/dificultad3"
-            android:textColor="#000000"
-            android:textSize="14sp" />
+            android:text="@string/dificulty_3"
+            android:textSize="18dp" />
     </RadioGroup>
 
-    <Button
-        android:id="@+id/botonEmpezar"
-        android:layout_width="wrap_content"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/startButton"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/colorTertiary"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/colorPrimary"
         android:onClick="Start"
-        android:text="@string/empezar"
-        android:textColor="@color/colorSecondary"
+        android:padding="8dp"
+        android:text="@string/start"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBoxInverseGame" />
+        app:layout_constraintTop_toBottomOf="@+id/switchInverse">
+
+    </com.google.android.material.button.MaterialButton>
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="@font/bungee"
         android:text="@string/app_name"
         android:textColor="@color/colorPrimary"
-        android:textSize="32sp"
+        android:textSize="40dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="LPatón"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
+        android:elevation="12dp"
+        android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8"
-        app:srcCompat="@mipmap/icon_foreground" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:srcCompat="@mipmap/speed_icon_round" />
 
-    <CheckBox
-        android:id="@+id/checkBoxInverseGame"
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/switchInverse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:text="Inversa"
+        android:layout_marginTop="16dp"
+        android:padding="8dp"
+        android:text="Inverse "
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroupDifficulty" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 </androidx.constraintlayout.widget.ConstraintLayout>

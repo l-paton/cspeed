@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="paton.laura.velocidaddecalculo">
+    package="paton.laura.cspeed">
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/rocket_icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/rocket_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Game" />
+        <activity android:name="paton.laura.cspeed.Game" />
 
-        <meta-data
-            android:name="com.google.android.actions"
-            android:resource="@drawable/rounded_edittext" />
-
-        <activity android:name=".MainActivity">
+        <activity
+            android:name="paton.laura.cspeed.MainActivity"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

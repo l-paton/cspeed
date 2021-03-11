@@ -1,13 +1,12 @@
 <resources>
     <string name="app_name">CSpeed</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="aciertos">ACIERTOS: %d</string>
     <string name="fallos">FALLOS: %d</string>
-    <string name="numero">%s %s</string>
-    <string name="dificultad1">Fácil</string>
-    <string name="dificultad2">Normal</string>
-    <string name="dificultad3">Difícil</string>
-    <string name="empezar">Empezar</string>
+    <string name="number">%s %s</string>
+    <string name="dificulty_1">Fácil</string>
+    <string name="dificulty_2">Normal</string>
+    <string name="dificulty_3">Difícil</string>
+    <string name="start">Empezar</string>
     <string name="save_game_question">¿Guardar resultado?"</string>
     <string name="yes">Sí</string>
     <string name="no">No</string>

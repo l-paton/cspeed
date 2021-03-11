@@ -127,7 +127,7 @@
         app:layout_constraintEnd_toStartOf="@+id/btnEnter"
         app:layout_constraintStart_toStartOf="@+id/btn1"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/numero" />
+        tools:text="@string/number" />
 
     <Button
         android:id="@+id/btnClear"
