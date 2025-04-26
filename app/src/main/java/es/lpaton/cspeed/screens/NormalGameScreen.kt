@@ -7,6 +7,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -37,6 +38,7 @@ fun NormalGameScreen(navController: NavController) {
     var userInput by remember { mutableStateOf("") }
     var showFeedback by remember { mutableStateOf(false) }
     var isCorrect by remember { mutableStateOf(false) }
+    var text by remember { mutableStateOf(userInput) }
 
     LaunchedEffect(Unit) {
         gameManager.resetGame()
@@ -52,7 +54,7 @@ fun NormalGameScreen(navController: NavController) {
     Box(modifier = Modifier
         .fillMaxSize()
         .background(colorResource(R.color.primary))
-        .padding(16.dp)){
+        .padding(12.dp)){
 
         Column(modifier = Modifier
             .fillMaxWidth(),
@@ -92,6 +94,47 @@ fun NormalGameScreen(navController: NavController) {
                 .fillMaxWidth()
                 .padding(16.dp)) {
 
+                Row(modifier = Modifier.fillMaxWidth()
+                    .padding(6.dp)){
+                    TextField(
+                        modifier = Modifier
+                            .weight(1f)
+                            .height(45.dp)
+                            .padding(end = 8.dp),
+                        shape = RoundedCornerShape(2.dp),
+                        value = userInput,
+                        onValueChange = { newValue ->
+                            userInput = newValue
+                        },
+                    )
+
+                    Button(
+                        onClick = {
+                            if (userInput.isNotEmpty()) {
+                                isCorrect = gameManager.checkAnswer(userInput.toInt())
+                                showFeedback = true
+                                userInput = ""
+
+                                if (isCorrect) {
+                                    gameState = gameManager.getCurrentState()
+                                }
+                            }
+                        },
+                        modifier = Modifier
+                            .height(45.dp),
+                        shape = RoundedCornerShape(2.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = colorResource(R.color.primary_dark),
+                            contentColor = Color.Black
+                        ),
+                    ) {
+                        Text("ENTER", color = Color.White)
+                    }
+                }
+
+
+                Spacer(modifier = Modifier.height(16.dp))
+
                 for (i in 0..2) {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
@@ -114,6 +157,26 @@ fun NormalGameScreen(navController: NavController) {
                     NumberButton(number = 0) {
                         userInput += "0"
                     }
+
+                    Button(
+                        onClick = {
+                            if (userInput.isNotEmpty() && !userInput.contains("-")) {
+                                userInput = "-$userInput"
+                            }else{
+                                userInput = userInput.replace("-", "")
+                            }
+                        },
+                        modifier = Modifier
+                            .width(90.dp),
+                        shape = RoundedCornerShape(2.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = colorResource(R.color.primary_dark),
+                            contentColor = Color.Black
+                        ),
+                    ) {
+                        Text("+/-", color = Color.White)
+                    }
+
                     Button(
                         onClick = {
                             if (userInput.isNotEmpty()) {
@@ -121,8 +184,8 @@ fun NormalGameScreen(navController: NavController) {
                             }
                         },
                         modifier = Modifier
-                            .width(80.dp)
-                            .height(80.dp),
+                            .width(90.dp),
+                        shape = RoundedCornerShape(2.dp),
                         colors = ButtonDefaults.buttonColors(
                             containerColor = colorResource(R.color.primary_dark),
                             contentColor = Color.Black
@@ -130,40 +193,9 @@ fun NormalGameScreen(navController: NavController) {
                     ) {
                         Text("⌫", color = Color.White)
                     }
-                    Button(
-                        onClick = {
-                            if (userInput.isNotEmpty()) {
-                                isCorrect = gameManager.checkAnswer(userInput.toInt())
-                                showFeedback = true
-                                userInput = ""
-
-                                if (isCorrect) {
-                                    gameState = gameManager.getCurrentState()
-                                }
-                            }
-                        },
-                        modifier = Modifier
-                            .width(80.dp)
-                            .height(80.dp),
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = colorResource(R.color.primary_dark),
-                            contentColor = Color.Black
-                        ),
-                    ) {
-                        Text("✓", color = Color.White)
-                    }
                 }
 
-                Row(modifier = Modifier.fillMaxWidth()
-                    .padding(12.dp),
-                    horizontalArrangement = Arrangement.Center) {
-
-                    Text(
-                        text = userInput,
-                        fontSize = 24.sp,
-                        modifier = Modifier.padding(vertical = 16.dp)
-                    )
-                }
+                Spacer(modifier = Modifier.height(8.dp))
 
                 Row(modifier = Modifier.fillMaxWidth()
                     .padding(12.dp),
@@ -205,8 +237,8 @@ fun NumberButton(number: Int, onClick: () -> Unit) {
     Button(
         onClick = onClick,
         modifier = Modifier
-            .width(80.dp)
-            .height(80.dp),
+            .width(90.dp),
+        shape = RoundedCornerShape(2.dp),
         colors = ButtonDefaults.buttonColors(
             containerColor = colorResource(R.color.primary_dark),
             contentColor = Color.Black
