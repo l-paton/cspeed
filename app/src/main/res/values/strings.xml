@@ -1,13 +1,13 @@
 <resources>
     <string name="app_name">CSpeed</string>
-    <string name="aciertos">ACIERTOS: %d</string>
-    <string name="fallos">FALLOS: %d</string>
-    <string name="number">%s %s</string>
-    <string name="dificulty_1">Fácil</string>
-    <string name="dificulty_2">Normal</string>
-    <string name="dificulty_3">Difícil</string>
-    <string name="start">Empezar</string>
-    <string name="save_game_question">¿Guardar resultado?"</string>
-    <string name="yes">Sí</string>
-    <string name="no">No</string>
+    <string name="normal_mode">Normal mode</string>
+    <string name="inverse_mode">Inverse mode</string>
+    <string name="score">Score: %1$d</string>
+    <string name="time_left">Remaining time: %1$d</string>
+    <string name="back">Back</string>
+    <string name="correct">Correct!</string>
+    <string name="incorrect">Incorrect</string>
+    <string name="game_over">Finished game!</string>
+    <string name="final_score">Final score: %1$d</string>
+    <string name="start">START</string>
 </resources>
