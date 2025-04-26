@@ -3,11 +3,14 @@ package es.lpaton.cspeed.screens
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldColors
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -15,7 +18,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -38,7 +40,6 @@ fun NormalGameScreen(navController: NavController) {
     var userInput by remember { mutableStateOf("") }
     var showFeedback by remember { mutableStateOf(false) }
     var isCorrect by remember { mutableStateOf(false) }
-    var text by remember { mutableStateOf(userInput) }
 
     LaunchedEffect(Unit) {
         gameManager.resetGame()
@@ -53,35 +54,67 @@ fun NormalGameScreen(navController: NavController) {
 
     Box(modifier = Modifier
         .fillMaxSize()
-        .background(colorResource(R.color.primary))
+        .background(colorResource(R.color.black))
         .padding(12.dp)){
 
         Column(modifier = Modifier
             .fillMaxWidth(),
             verticalArrangement = Arrangement.Top){
             Row(
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
                     .padding(16.dp),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
                     text = "Score: ${gameState.score}",
-                    fontSize = 20.sp
+                    fontSize = 20.sp,
+                    color = colorResource(R.color.accent)
                 )
                 Text(
                     text = "Time: ${gameState.timeLeft}",
-                    fontSize = 20.sp
+                    fontSize = 20.sp,
+                    color = colorResource(R.color.accent)
                 )
             }
 
-            Row(modifier = Modifier.fillMaxWidth()
-                .padding(34.dp),
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Row(modifier = Modifier
+                .fillMaxWidth()
+                .padding(12.dp),
+                horizontalArrangement = Arrangement.Center){
+                if (showFeedback) {
+                    Text(
+                        text = if (isCorrect) stringResource(R.string.correct) else stringResource(R.string.incorrect),
+                        color = if (isCorrect) colorResource(R.color.correct) else colorResource(R.color.incorrect),
+                        fontSize = 24.sp
+                    )
+                    LaunchedEffect(Unit) {
+                        delay(1000)
+                        showFeedback = false
+                    }
+                }
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Row(modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
                 horizontalArrangement = Arrangement.Center){
                 gameState.currentOperation?.let { operation ->
                     Text(
+                        modifier = Modifier
+                            .background(
+                                color = colorResource(R.color.primary_dark),
+                                shape = RoundedCornerShape(6.dp)
+                            )
+                            .padding(24.dp),
                         text = "${operation.num1} ${operation.operator} ${operation.num2} = ?",
                         fontSize = 36.sp,
-                        fontWeight = FontWeight.Bold
+                        fontWeight = FontWeight.Bold,
+                        color = Color.White
                     )
                 }
             }
@@ -94,7 +127,8 @@ fun NormalGameScreen(navController: NavController) {
                 .fillMaxWidth()
                 .padding(16.dp)) {
 
-                Row(modifier = Modifier.fillMaxWidth()
+                Row(modifier = Modifier
+                    .fillMaxWidth()
                     .padding(6.dp)){
                     TextField(
                         modifier = Modifier
@@ -106,6 +140,13 @@ fun NormalGameScreen(navController: NavController) {
                         onValueChange = { newValue ->
                             userInput = newValue
                         },
+                        colors = TextFieldDefaults.colors(
+                            focusedContainerColor = colorResource(R.color.primary_dark),
+                            unfocusedContainerColor = colorResource(R.color.primary_dark),
+                            cursorColor = colorResource(R.color.green),
+                            focusedTextColor = Color.White,
+                            unfocusedTextColor = Color.White
+                        ),
                     )
 
                     Button(
@@ -124,11 +165,11 @@ fun NormalGameScreen(navController: NavController) {
                             .height(45.dp),
                         shape = RoundedCornerShape(2.dp),
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = colorResource(R.color.primary_dark),
-                            contentColor = Color.Black
+                            containerColor = colorResource(R.color.primary),
+                            contentColor = colorResource(R.color.black)
                         ),
                     ) {
-                        Text("ENTER", color = Color.White)
+                        Text("ENTER", color = colorResource(R.color.black))
                     }
                 }
 
@@ -170,11 +211,13 @@ fun NormalGameScreen(navController: NavController) {
                             .width(90.dp),
                         shape = RoundedCornerShape(2.dp),
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = colorResource(R.color.primary_dark),
-                            contentColor = Color.Black
+                            containerColor = colorResource(R.color.primary),
+                            contentColor = colorResource(R.color.black)
                         ),
                     ) {
-                        Text("+/-", color = Color.White)
+                        Text("+/-",
+                            color = colorResource(R.color.black),
+                            fontSize = 24.sp,)
                     }
 
                     Button(
@@ -187,29 +230,13 @@ fun NormalGameScreen(navController: NavController) {
                             .width(90.dp),
                         shape = RoundedCornerShape(2.dp),
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = colorResource(R.color.primary_dark),
-                            contentColor = Color.Black
+                            containerColor = colorResource(R.color.primary),
+                            contentColor = colorResource(R.color.black)
                         ),
                     ) {
-                        Text("⌫", color = Color.White)
-                    }
-                }
-
-                Spacer(modifier = Modifier.height(8.dp))
-
-                Row(modifier = Modifier.fillMaxWidth()
-                    .padding(12.dp),
-                    horizontalArrangement = Arrangement.Center){
-                    if (showFeedback) {
-                        Text(
-                            text = if (isCorrect) stringResource(R.string.correct) else stringResource(R.string.incorrect),
-                            color = if (isCorrect) colorResource(R.color.correct) else colorResource(R.color.incorrect),
-                            fontSize = 24.sp
-                        )
-                        LaunchedEffect(Unit) {
-                            delay(1000)
-                            showFeedback = false
-                        }
+                        Text("⌫",
+                            color = colorResource(R.color.black),
+                            fontSize = 22.sp)
                     }
                 }
             }
@@ -219,8 +246,8 @@ fun NormalGameScreen(navController: NavController) {
             onClick = { navController.navigateUp() },
             modifier = Modifier
                 .align(Alignment.BottomCenter)
-                .width(222.dp)
-                .padding(top = 16.dp),
+                .fillMaxWidth()
+                .padding(34.dp),
             colors = ButtonDefaults.buttonColors(
                 containerColor = colorResource(R.color.accent),
                 contentColor = Color.Black
@@ -240,14 +267,14 @@ fun NumberButton(number: Int, onClick: () -> Unit) {
             .width(90.dp),
         shape = RoundedCornerShape(2.dp),
         colors = ButtonDefaults.buttonColors(
-            containerColor = colorResource(R.color.primary_dark),
+            containerColor = colorResource(R.color.primary),
             contentColor = Color.Black
         ),
     ) {
         Text(
             text = number.toString(),
             fontSize = 24.sp,
-            color = Color.White
+            color = colorResource(R.color.black)
         )
     }
 }

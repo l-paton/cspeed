@@ -4,7 +4,7 @@
     <color name="primary_dark">#282828</color>
     <color name="accent">#d4d4d4</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="black">#FF000000</color>
+    <color name="black">#1a1a1a</color>
     <color name="correct">#FF4CAF50</color>
     <color name="incorrect">#FFF44336</color>
     <color name="background">#a12a3c</color>

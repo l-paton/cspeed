@@ -92,16 +92,16 @@ class GameLogic {
 
         private fun generateOperation(): Operation {
             val operator = operators.random()
-            val num1 = Random.nextInt(1, 10)
-            val num2 = Random.nextInt(1, 10)
+            var num1 = Random.nextInt(1, 100)
+            var num2 = Random.nextInt(1, 100)
 
             val result = when (operator) {
                 "+" -> num1 + num2
                 "-" -> num1 - num2
                 "×" -> num1 * num2
                 "÷" -> {
-                    val product = num1 * num2
-                    product / num1
+                    num1 = num1 * num2
+                    num1 / num2
                 }
                 else -> 0
             }
